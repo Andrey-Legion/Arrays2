@@ -9,9 +9,7 @@ public class Main {
         int sumMonth = 0;
         for (int dayMonth : arrMonth) {
             sumMonth = sumMonth + dayMonth;
-            if (dayMonth == arrMonth[arrMonth.length - 1]) {
-                //усл.оператор с пустым блоком кода!
-            }
+            //boolean mediate = dayMonth == arrMonth[arrMonth.length - 1];
         }
         System.out.println("Сумма трат за месяц составила " + sumMonth + " рублей");
 
@@ -19,22 +17,21 @@ public class Main {
 
             //Если траты до 200000
             int maxMonth = 0, minMonth = 210000;
-            for (int i = 0; i < arrMonth.length; i++) {
-                if (arrMonth[i] < minMonth) {
-                    minMonth = arrMonth[i];
-                }
-                if (arrMonth[i] > maxMonth) {
-                    maxMonth = arrMonth[i];
+            for (final int current : arrMonth) { //цикл инкр.постфикс
+                                                 //перед промеж.перем.current и foreach 'final int current=arrMonth[i]'
+                if (current < minMonth) {      //if(arrMonth[i]<minMonth){
+                    minMonth = current;        // minMonth=arrMonth{[i];
+                }                                  //{
+                if (current > maxMonth) {      //if(arrMonth[i]>maxMonth){
+                    maxMonth = current;        // maxMonth=arrMonth[i];
                 }
             }
             System.out.println("Минимальная сумма трат за день составила " + minMonth + " рублей. Максимальная сумма трат за день составила " + maxMonth + " рублей");
 
             System.out.println("Task3");
 
-            var averMonth = 0;
-            for (int i = 0; i < arrMonth.length; i++) {
-                averMonth = sumMonth / arrMonth.length;
-            }
+            int averMonth;
+            averMonth = sumMonth / arrMonth.length;
             System.out.println("Средняя сумма трат за месяц составила " + averMonth + " рублей");
 
             System.out.println("Task4");
